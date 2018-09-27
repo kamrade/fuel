@@ -1,10 +1,10 @@
 import _ from 'lodash';
 
-import stockImage from '../images/stock.jpg';
-import '../styles/style.scss';
-
 import printMe from './modules/print.js';
 import { cube } from './modules/math';
+
+import stockImage from '../images/stock.jpg';
+import '../styles/style.scss';
 
 const navBarElem = document.querySelector('.navbar');
 
@@ -42,7 +42,7 @@ function component() {
 
 function formComponent() {
   const formView = `
-  <div class="login-page">
+  <div class="login-page mb-3">
     <div class="form">
       <form name="loginForm" class="login-form">
         <input id="firstName" data-testid="firstName" type="text" placeholder="First Name" />
@@ -54,7 +54,7 @@ function formComponent() {
   </div>
   `;
 
-  navBarElem.insertAdjacentHTML('afterbegin', formView);
+  navBarElem.insertAdjacentHTML('afterend', formView);
 }
 
 let state = {
@@ -69,7 +69,6 @@ let state = {
 //   .then((data) => state.starWars = data)
 //   .then(() => navBarElem.insertAdjacentHTML('afterbegin', `<h3 data-testid="starWars">${state.starWars.url ? 'Recived StarWars data!' : 'Doesnt work'}</h3>`))
 // })
-
 
 function onSubmit() {
   const button = document.getElementById('login-button');

@@ -2,26 +2,14 @@
 @import './fonts/_cartograph-mono';
 @import './fonts/_cartograph-sans';
 @import './fonts/_font-open-iconic';
-// @import './global/variable.scss';
 
 body {
   font-family: 'Cartograph Sans CF';
 }
 
-@font-face {
-  font-family: 'MyFont';
-  src: url('../fonts/kinetic/HussarBoldWeb.otf') format('otf'),
-    url('../fonts/kinetic/HussarBoldWeb.woff') format('woff');
-
-  font-weight: 600;
-  font-style: normal;
-}
-
 .hello {
-  // color: red;
-  // font-family: 'MyFont';
-  // background: url('../images/bg.jpeg');
   position: relative;
+
   &::after {
     content: '';
     position: absolute;
