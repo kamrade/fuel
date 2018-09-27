@@ -6,6 +6,9 @@
 - `npm run build` - bundling to prod
 - app runs on `http://localhost:8080`
 
+### Original project:
+https://github.com/czechue/webpack-4-vanilla-js-starter
+
 ### Includes:
 - Hot reloading
 - Dev / Prod separation builds
@@ -21,9 +24,9 @@
 - Puppeteer https://github.com/GoogleChrome/puppeteer
 - Jest-Pupeteer https://github.com/smooth-code/jest-puppeteer
 - Pixelmatch https://github.com/mapbox/pixelmatch
-- 
+-
 
-### TODO
+<!-- ### TODO
 - [ ] improve documentation,
 - [ ] clean src folder and add adnotations,
 - [ ] add demo app (todo / hacker news clone etc.),
@@ -41,4 +44,4 @@
 - [ ] check if something interesting can be added from https://hackernoon.com/a-tale-of-webpack-4-and-how-to-finally-configure-it-in-the-right-way-4e94c8e7e5c1
 - [ ] checklist final project with this list https://github.com/thedaviddias/Front-End-Checklist
 - [x] add .editorconfig file
-- [x] add babel presets
+- [x] add babel presets -->
