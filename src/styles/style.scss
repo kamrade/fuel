@@ -1,4 +1,12 @@
+@import './bootstrap/bootstrap';
+@import './fonts/_cartograph-mono';
+@import './fonts/_cartograph-sans';
+@import './fonts/_font-open-iconic';
 @import './global/variable.scss';
+
+body {
+	font-family: 'Cartograph Sans CF';
+}
 
 @font-face {
 	font-family: 'MyFont';

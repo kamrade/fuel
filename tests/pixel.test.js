@@ -15,7 +15,8 @@ beforeAll(async () => {
 
 describe('screenshots are correct', () => {
   it('/index', async() => {
-    const file = 'screenshot.png';
+    // const file = 'screenshot.png';
+    const file = 'screen1.png';
     await page.screenshot({ path: file })
     return pixelTest.compareScreenshots(file)
   })
