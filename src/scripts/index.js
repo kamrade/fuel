@@ -1,6 +1,8 @@
 import _ from 'lodash';
+
 import stockImage from '../images/stock.jpg';
 import '../styles/style.scss';
+
 import printMe from './modules/print.js';
 import { cube } from './modules/math';
 
