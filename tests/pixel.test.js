@@ -3,7 +3,6 @@ const devices = require('puppeteer/DeviceDescriptors');
 const iPhone = devices['iPhone 6'];
 const pixelTest = require('./diffImages')
 
-
 let browser;
 let page;
 beforeAll(async () => {
