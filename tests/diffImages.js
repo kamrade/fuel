@@ -2,8 +2,11 @@ const pixelmatch = require('pixelmatch');
 const fs = require('fs');
 const PNG = require('pngjs').PNG;
 
+// function to compare two screenshots
 exports.compareScreenshots = (fileName) => {
-	return new Promise((resolve, reject) => {
+  return new Promise((resolve, reject) => {
+
+    // callback function with jest instructions
     const doneReading = () => {
       expect(img1.width).toBe(img2.width)
       expect(img1.height).toBe(img2.height)
@@ -15,14 +18,17 @@ exports.compareScreenshots = (fileName) => {
         img1.width,
         img1.height,
         { threshold: 0.1 }
-      )
-      expect(numDiffPixels).toBe(0)
-      resolve()
+      );
+
+      expect(numDiffPixels).toBe(0);
+      resolve();
     }
-		const img1 = fs.createReadStream('screen1.png').pipe(new PNG());
-		const img2 = fs
-			.createReadStream(fileName)
-			.pipe(new PNG())
-			.on('parsed', doneReading);
-	});
+
+    const img1 = fs.createReadStream('screen1.png').pipe(new PNG());
+    const img2 = fs
+      .createReadStream(fileName)
+      .pipe(new PNG())
+      .on('parsed', doneReading);
+
+  });
 };

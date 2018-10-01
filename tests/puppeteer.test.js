@@ -1,13 +1,17 @@
 import puppeteer from 'puppeteer';
-import faker from 'faker';
-const  devices = require('puppeteer/DeviceDescriptors');
-const  iPhone = devices['iPhone 6'];
+import faker     from 'faker';
+const  devices   = require('puppeteer/DeviceDescriptors');
+const  iPhone    = devices['iPhone 6'];
+
+// create object with user details.
 
 const user = {
   firsName: faker.name.firstName(),
   lastName: faker.name.lastName(),
-  email: faker.internet.email()
+  email:    faker.internet.email()
 };
+
+// find out is it debugging mode.
 
 const isDebugging = () => {
   const debugging_mode = {
@@ -18,13 +22,20 @@ const isDebugging = () => {
   return process.env.NODE_ENV === 'debug' ? debugging_mode : {};
 };
 
+// init variables
+
 let browser;
 let page;
 let logs = [];
 let errors = [];
+// jest.setTimeout(15000);
+
+// run browser.
+
 beforeAll(async () => {
   browser = await puppeteer.launch(isDebugging());
   page = await browser.newPage();
+
   // await page.setRequestInterception(true);
   // page.on('request', interceptedRequest => {
   //   if (interceptedRequest.url.includes('swapi')) {
@@ -33,34 +44,44 @@ beforeAll(async () => {
   //     interceptedRequest.continue()
   //   }
   // })
+
+  // Event listeners:
+
   page.on('console', (c) => {
-    // console.log(c._text);
+    console.log(':: value to console ::');
+    console.log(c._text);
     logs.push(c._text);
   });
+
+  // it looks like this is no errorpages event here
+
   page.on('errorpages', (e) => errors.push(e.text));
+
+  // render page
+
   await page.goto('http://localhost:8080/');
-  page.setViewport({ width: 500, height: 2400 });
+  page.setViewport({ width: 500, height: 720 });
 });
 
-describe('on page load', () => {
-  test(
-    'h1 loads correctly',
-    async () => {
-      const html = await page.$eval('[data-testid="h1"]', (e) => e.innerHTML);
+// Tests onload
 
-      expect(html).toBe('This is nice Webpack boilerplate');
-    },
-    16000
-  );
+describe('on page load', () => {
+
+  test('h1 loads correctly', async () => {
+    const html = await page.$eval('[data-testid="h1"]', (e) => e.innerHTML);
+    expect(html).toBe('This is nice Webpack boilerplate');
+    // i think this 16,000 timeout doesn't work correctly.
+    // Actually if you want to use longer than 5,000 timeout you should use
+    // jest.setTimeout(30000);
+  }, 16000);
 
   test('nav loads correctly', async () => {
-    const navbar = await page.$eval(
-      '[data-testid="navbar"]',
-      (el) => (el ? true : false)
-    );
+    const navbar = await page.$eval('[data-testid="navbar"]', (el) => (el ? true : false));
+    expect(navbar).toBe(true);
+
     const listItems = await page.$$('[data-testid="nav-li"]');
 
-    expect(navbar).toBe(true);
+    // wtf it for???
     if (listItems.length !== 3) {
       await page.screenshot({ path: 'tests/screen1.png' });
     }
@@ -68,65 +89,56 @@ describe('on page load', () => {
     expect(listItems.length).toBe(4);
   });
 
-  test(
-    'login form works correctly',
-    async () => {
-      // CONDITION WHEN JWT TOKEN IS REQUIRED TO SUBMIT THE FORM
-      // await page.setCookie({ name: 'JWT', value: '123asd1231' })
+  test('login form works correctly', async () => {
 
-      await page.click('[data-testid="firstName"]');
-      await page.type('[data-testid="firstName"]', user.firsName, {
+    // CONDITION WHEN JWT TOKEN IS REQUIRED TO SUBMIT THE FORM
+    // await page.setCookie({ name: 'JWT', value: '123asd1231' })
+
+    await page.click('[data-testid="firstName"]');
+    await page.type('[data-testid="firstName"]', user.firsName, { delay: 10 });
+    await page.click('[data-testid="lastName"]');
+    await page.type('[data-testid="lastName"]', user.lastName, { delay: 10 });
+    await page.click('[data-testid="email"]');
+    await page.type('[data-testid="email"]', user.email, { delay: 10 });
+    await page.click('[data-testid="button"');
+    await page.waitForSelector('[data-testid="success"]');
+
+    // Apparently 16,000 doesn't work
+
+  }, 16000);
+
+  describe('login form', () => {
+
+    test('fills out form and submits', async () => {
+      const page2 = await browser.newPage();
+      await page2.emulate(iPhone);
+      await page2.goto('http://localhost:8080/');
+
+      // CONDITION WHEN JWT TOKEN IS REQUIRED TO SUBMIT THE FORM
+      // await page2.setCookie({ name: 'JWT', value: '123asd1231'})
+
+      const firstNameEl = await page2.$('[data-testid="firstName"]');
+      const lastNameEl = await page2.$('[data-testid="lastName"]');
+      const emailEl = await page2.$('[data-testid="email"]');
+      const buttonEl = await page2.$('[data-testid="button"]');
+
+      await firstNameEl.tap();
+      await page2.type('[data-testid="firstName"]', user.firsName, {
         delay: 10
       });
 
-      await page.click('[data-testid="lastName"]');
-      await page.type('[data-testid="lastName"]', user.lastName, { delay: 10 });
+      await lastNameEl.tap();
+      await page2.type('[data-testid="lastName"]', user.lastName, {
+        delay: 10
+      });
 
-      await page.click('[data-testid="email"]');
-      await page.type('[data-testid="email"]', user.email, { delay: 10 });
+      await emailEl.tap();
+      await page2.type('[data-testid="email"]', user.email, { delay: 10 });
 
-      await page.click('[data-testid="button"');
+      await buttonEl.tap();
 
-      await page.waitForSelector('[data-testid="success"]');
-    },
-    16000
-  );
-
-  describe('login form', () => {
-    test(
-      'fills out form and submits',
-      async () => {
-        const page2 = await browser.newPage();
-        await page2.emulate(iPhone);
-        await page2.goto('http://localhost:8080/');
-
-        // CONDITION WHEN JWT TOKEN IS REQUIRED TO SUBMIT THE FORM
-        // await page2.setCookie({ name: 'JWT', value: '123asd1231'})
-
-        const firstNameEl = await page2.$('[data-testid="firstName"]');
-        const lastNameEl = await page2.$('[data-testid="lastName"]');
-        const emailEl = await page2.$('[data-testid="email"]');
-        const buttonEl = await page2.$('[data-testid="button"]');
-
-        await firstNameEl.tap();
-        await page2.type('[data-testid="firstName"]', user.firsName, {
-          delay: 10
-        });
-
-        await lastNameEl.tap();
-        await page2.type('[data-testid="lastName"]', user.lastName, {
-          delay: 10
-        });
-
-        await emailEl.tap();
-        await page2.type('[data-testid="email"]', user.email, { delay: 10 });
-
-        await buttonEl.tap();
-
-        await page2.waitForSelector('[data-testid="success"]');
-      },
-      16000
-    );
+      await page2.waitForSelector('[data-testid="success"]');
+    }, 16000);
 
     test(
       'sets firstName cookie',
