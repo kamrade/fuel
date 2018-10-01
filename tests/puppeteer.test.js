@@ -78,14 +78,11 @@ describe('on page load', () => {
   test('nav loads correctly', async () => {
     const navbar = await page.$eval('[data-testid="navbar"]', (el) => (el ? true : false));
     expect(navbar).toBe(true);
-
     const listItems = await page.$$('[data-testid="nav-li"]');
-
     // wtf it for???
     if (listItems.length !== 3) {
       await page.screenshot({ path: 'tests/screen1.png' });
     }
-
     expect(listItems.length).toBe(4);
   });
 
