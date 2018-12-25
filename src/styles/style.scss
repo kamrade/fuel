@@ -1,11 +1,8 @@
 @import './bootstrap/bootstrap';
-@import './fonts/_cartograph-mono';
-@import './fonts/_cartograph-sans';
+// @import './fonts/_cartograph-mono';
+@import './fonts/_cartograph-mono-light';
+// @import './fonts/_cartograph-sans';
 @import './fonts/_font-open-iconic';
-
-body {
-  font-family: 'Cartograph Sans CF';
-}
 
 .hello {
   position: relative;
