@@ -9,7 +9,9 @@
 
 
 body {
-  // height: 2000px;
+  &.loading {
+    overflow: hidden;
+  }
 }
 
 .hello {

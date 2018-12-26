@@ -4,37 +4,40 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Page Title</title>
+  <link href="https://fonts.googleapis.com/css?family=Lato:400,700" rel="stylesheet">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
-<body>
+<body class="loading">
   <div class="app">
-
-
 
     <div class="container">
       <header class="header">
-        <div class="title-image"></div>
 
+        <div class="title-image">
+          <h1>Dennis Deikstra<br/>
+            Design, Develop,<br/>
+            Prototyping
+          </h1>
+        </div>
 
         <div class="menu">
           <ul>
             <li><a href="#">Portfolio</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">Archive</a></li>
-            <li><a href="#">About me</a></li>
+            <li><a href="/about.html">About me</a></li>
             <li><a href="#">Contacts</a></li>
           </ul>
-        </div>
-
-
-        <div class="header-title-bg-grid">
-          <p>Some text</p>
         </div>
       </header>
     </div>
 
-
+    <div class="header-title-bg-grid">
+      <div class="container">
+        <h2>Prototyping</h2>
+      </div>
+    </div>
 
     <div class="fuel-grid container-fluid">
       <div class="row">
@@ -76,8 +79,34 @@
       </div>
     </div>
 
-
-
   </div>
+
+
+  <style>
+
+    .preloader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-image: url('../images/dot_pattern_300.png');
+      display: flex;
+    }
+
+    .preloader .loader-text {
+      font-family: 'Lato' sans-serif;
+      margin: auto;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 20px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  </style>
+  <div class="preloader">
+    <h2 class="loader-text">Loading...</h2>
+  </div>
+
 </body>
 </html>

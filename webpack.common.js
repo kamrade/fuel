@@ -34,13 +34,23 @@ module.exports = {
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/,
         exclude: /node_modules/,
-        // use: [ 'file-loader' ]
-        loader: 'url-loader?limit=1024&name=images/[name].[ext]'
+        use: [{
+          loader: 'file-loader',
+          options: {
+            name: '[name].[ext]',
+            outputPath: 'images/',
+            publicPath: 'images/'
+          }
+        }]
+        // loader: 'url-loader?limit=1024&name=images/[name].[ext]'
       },
       {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         // use: [ 'file-loader' ],
         loader: 'url-loader?limit=1024&name=fonts/[name].[ext]'
+      }, {
+        test:/\.html$/,
+        loader: ['html-loader']
       }
     ]
   },
@@ -57,9 +67,15 @@ module.exports = {
     }),
     // it will replace our index.html file with a newly generated one
     new HtmlWebpackPlugin({
-      title: 'Output Management',
+      filename: 'index.html',
       template: './src/templates/index.html'
     }),
+    new HtmlWebpackPlugin({
+      filename: 'about.html',
+      template: './src/templates/about.html',
+      chunks: [ 'app' ]
+    }),
+
     // Enabling Hot Module Replacement
     new webpack.NamedModulesPlugin(),
     new webpack.HotModuleReplacementPlugin()
