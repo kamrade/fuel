@@ -11,8 +11,9 @@ header.header {
   .title-image {
 
     h1 {
-      font-size: 40px;
-      line-height: 50px;
+      font-size: 60px;
+      line-height: 1.2;
+      font-weight: 600;
       letter-spacing: 0.5px;
     }
   }
@@ -51,8 +52,8 @@ header.header {
   background-image: url('../images/dot_pattern_300.png');
 
   h2 {
-    font-size: 80px;
-    line-height: 100px;
-    letter-spacing: 1px;
+    font-size: 20px;
+    line-height: 1.5;
+    letter-spacing: 0.5px;
   }
 }
