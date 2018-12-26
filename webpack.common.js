@@ -25,7 +25,8 @@ module.exports = {
         test: /\.s?[ac]ss$/,
         use: [
           // fallback to style-loader in development
-          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          MiniCssExtractPlugin.loader,
           'css-loader',
           'postcss-loader',
           'sass-loader'
