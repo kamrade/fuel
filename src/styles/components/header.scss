@@ -9,13 +9,19 @@ header.header {
   }
 
   .title-image {
-    transition: all 1.5s ease;
+    transform: matrix(1, 0, 0, 1, 0, 0);
+    position: relative;
+    transition: all .05s ease;
 
-    h1 {
+    h1.title-image-text {
       font-size: 60px;
       line-height: 1.2;
       font-weight: 600;
       letter-spacing: 0.5px;
+      transition: all .7s ease;
+      .title-image-block {
+        display: block;
+      }
     }
   }
 

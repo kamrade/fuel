@@ -6,7 +6,7 @@ import '../styles/style.scss';
 
 const preloader = new Preloader();
 const typing    = new Typing('#dynamic-text');
-new ScrollControl('.title-image', 0, 40);
+new ScrollControl('.title-image', 0, 150);
 
 function ready() {
   preloader.hidePreloader();
