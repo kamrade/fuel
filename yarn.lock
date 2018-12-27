@@ -16,6 +16,20 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@types/gsap@^1.20.0":
+  version "1.20.0"
+  resolved "https://registry.yarnpkg.com/@types/gsap/-/gsap-1.20.0.tgz#131c3ce39d7e18c0278285ec58a1eb216936de59"
+
+"@types/jquery@^3.3.29":
+  version "3.3.29"
+  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.29.tgz#680a2219ce3c9250483722fccf5570d1e2d08abd"
+  dependencies:
+    "@types/sizzle" "*"
+
+"@types/sizzle@*":
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
+
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
   resolved "https://registry.yarnpkg.com/@webassemblyjs/ast/-/ast-1.7.11.tgz#b988582cafbb2b095e8b556526f30c90d057cace"
