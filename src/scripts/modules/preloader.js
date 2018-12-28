@@ -1,6 +1,7 @@
 import $ from 'jquery';
 
 export default class Preloader {
+
   constructor() {
     this.$preloader = $('.preloader');
     this.$body = $('body');
@@ -23,4 +24,5 @@ export default class Preloader {
       });
     }
   }
+
 }

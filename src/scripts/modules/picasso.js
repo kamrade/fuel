@@ -318,7 +318,7 @@
                       value[k] = convertPercentToPx(value[k], 'x');
                     }
                   }
-                } 
+                }
               } else {
                 if(typeof value === "string") { // if single value is a %
                   if(key === 'translateY') {
@@ -335,6 +335,7 @@
       }
     }
 
+    // ++
     getDefaultPropertyValue = function(property) {
       switch (property) {
         case 'translateX':
@@ -393,11 +394,12 @@
       } else {
         value = getDefaultPropertyValue(property);
       }
-      // value = +value.toFixed(2) 
+      // value = +value.toFixed(2)
       // TEMPORARILY REMOVED CAUSE SCALE DOESN'T WORK WITHA AGRESSIVE ROUNDING LIKE THIS
       return value;
     }
 
+    // ++
     easeInOutQuad = function (t, b, c, d) {
       //sinusoadial in and out
       return -c/2 * (Math.cos(Math.PI*t/d) - 1) + b;
@@ -440,7 +442,7 @@
     }
 
     isTouchDevice = function() {
-      return 'ontouchstart' in window // works on most browsers 
+      return 'ontouchstart' in window // works on most browsers
       || 'onmsgesturechange' in window; // works on ie10
     }
 

@@ -1,6 +1,5 @@
 import Preloader from './modules/preloader';
 import Typing from './modules/typing';
-import ScrollControl from './modules/scroll';
 import test from './modules/test';
 import Parallax from './modules/parallax';
 
