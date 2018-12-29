@@ -11,10 +11,17 @@ export default function scrollMagic() {
 
   let controller = new ScrollMagic.Controller({addIndicators: true});
   let ourScene   = new ScrollMagic.Scene({
-    triggerElement: '#project01'
+    triggerElement: '#project01',
+    duration: '100%',
+    triggerHook: 0
   })
   .setClassToggle('#project01', 'fade-in')
-  .addIndicators()
+  .addIndicators({
+    name: 'fadeScene',
+    colorTrigger: 'black',
+    colorStart: 'green',
+    colorEnd: 'red'
+  })
   .addTo(controller)
   ;
 
