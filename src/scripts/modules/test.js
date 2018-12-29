@@ -1,9 +1,6 @@
 export default function test() {
 
   const elem = document.getElementById('test');
-  elem.addEventListener('click', function() {
-    console.log(':: click');
-  });
 
   function animation(options) {
 
@@ -27,7 +24,9 @@ export default function test() {
       return Math.pow(timeFraction, 5);
     },
     draw: function(progress) {
-      elem.style.width = progress * 100 + '%'
+      if (elem) {
+        elem.style.width = progress * 100 + '%';
+      }
     }
   });
 

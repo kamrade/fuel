@@ -1,0 +1,22 @@
+.about {
+
+  .page-block {
+    height: 60vh;
+    padding: 50px;
+    background-color: $gray-100;
+    margin-bottom: 50px;
+  }
+
+  #project01 {
+    position: relative;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 1s ease-in-out;
+
+    &.fade-in {
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+
+}
