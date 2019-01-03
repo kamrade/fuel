@@ -89,6 +89,11 @@ module.exports = {
       template: './src/templates/about.html',
       // chunks: [ 'app' ]
     }),
+    new HtmlWebpackPlugin({
+      filename: 'project-extreme-wave.html',
+      template: './src/templates/project-extreme-wave.html',
+      // chunks: [ 'app' ]
+    }),
 
     // Enabling Hot Module Replacement
     new webpack.NamedModulesPlugin(),
